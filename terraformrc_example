@@ -1,0 +1,9 @@
+provider_installation {
+  filesystem_mirror {
+    path    = "<PATH_TO_GIT_LOCATION>/provider_network_mirror/terraform_file_mirror"
+    include = ["hashicorp/aws"]
+  }
+  direct {
+    exclude = ["hashicorp/aws"]
+  }
+}
