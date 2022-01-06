@@ -9,13 +9,14 @@ See the following documentation [How to install Terraform](https://learn.hashico
 
 # How to
 
+website: https://nip.io/
 
 # done
 - [x] create vagrant machine for nginx webserver to host the aws provider 
+    - [x] install nginx
 
 # to do
 
-    - [ ] install nginx
     - [ ] install terraform
     - [ ] configure certificates
     - [ ] download the provider with terraform from the internet
