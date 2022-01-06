@@ -14,12 +14,12 @@ website: https://nip.io/
 # done
 - [x] create vagrant machine for nginx webserver to host the aws provider 
     - [x] install nginx
+    - [x] install terraform
+    - [x] download the provider with terraform from the internet
 
 # to do
 
-    - [ ] install terraform
     - [ ] configure certificates
-    - [ ] download the provider with terraform from the internet
 - [ ] create vagrant machine with terraform to download the provider the nginx webserver
     - [ ] install terraform
     - [ ] download the provider with terraform from the nginx webserver
