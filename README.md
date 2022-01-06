@@ -11,10 +11,10 @@ See the following documentation [How to install Terraform](https://learn.hashico
 
 
 # done
+- [x] create vagrant machine for nginx webserver to host the aws provider 
 
 # to do
 
-- [ ] create vagrant machine for nginx webserver to host the aws provider 
     - [ ] install nginx
     - [ ] install terraform
     - [ ] configure certificates
@@ -23,4 +23,3 @@ See the following documentation [How to install Terraform](https://learn.hashico
     - [ ] install terraform
     - [ ] download the provider with terraform from the nginx webserver
 
-    
