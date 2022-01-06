@@ -25,7 +25,8 @@ Vagrant [See documentation](https://www.vagrantup.com/docs/installation)
 Virtualbox [See documentation](https://www.virtualbox.org/wiki/Downloads)
 
 ## SSL certificate
-You must configure a FQDN to the internal ip address ```192.168.56.33``` of the Vagrant box you will start uses and valid SSL certificates for the FQDN. 
+- You must configure a FQDN to the internal ip address ```192.168.56.33```. This address is configured in Vagrant and you will use it for the webserver. 
+- Valid SSL certificates for the FQDN. 
 
 If you don't have valid SSL certificates you can create one for free using Let's Encrypt. This repository includes an instruction on how to do this. [See documentation](nginx_create_certificate/README.md) This documentation will use Vagrant to create a server that can be used to create the SSL certificates. If you have SSL certificates you can skip this manual.    
 
