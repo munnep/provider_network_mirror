@@ -17,7 +17,7 @@ apt-get install -y nginx
 systemctl enable nginx 
 systemctl start nginx 
 ```
-- create a configuration for nginx with certification keys for SSL
+- create a configuration for nginx with certification keys for SSL and location where the terraform mirror of providers will be placed
 ```
 # Default server configuration
 server {
@@ -48,7 +48,7 @@ server {
 }
 ```
 - have the latest terraform 
-- have the terraform download the provider to the vagrant directory which is pointed in the nginx file
+- have the terraform download the provider to the vagrant directory which is pointed in the nginx file  
 provider.tf
 ```
 provider aws {}
@@ -57,8 +57,8 @@ provider aws {}
 terraform providers mirror /vagrant/terraform_file_mirror
 ```
 - Now the provider is on disk and the webserver has it available. 
-- change the terraform configuration so it will only use the webserver to download the provider
-create file ```$HOME/.terraformrc
+- change the terraform configuration so it will only use the webserver to download the provider  
+create file ```$HOME/.terraformrc```
 ```
 provider_installation {
   network_mirror {
