@@ -1,12 +1,15 @@
 # provider_network_mirror
 
-This repo will show you how you have a static web server hosting your terraform providers so you can download them from this website instead of from the internet itself
+This repo will show you how you have a static web server hosting your terraform providers so you can download them from this webserver instead of from the internet itself
 
-After the repo is started the following steps will be done
-- Nginx webserver will be started
-- terraform will download the AWS provider from the internet en store it under ```/vagrant/terraform_file_mirror```
+This repo uses a Vagrant virtual machine.   
+After the Vagrant virtual machine is started the following steps will happen:
+- ubuntu virtual machine starts
+- Nginx webserver will intalled configured and started
+- terraform will download the AWS provider from the internet and store it under ```/vagrant/terraform_file_mirror```
 - Terraform will create a file called ```$HOME/.terraformrc``` which from this point on will only look at this webserver by it's FQDN to download any providers
-- you will initialize terraform and see the download of the provider happened from the webserver instead of the public internet
+
+After this you will manually login and initialize terraform to see the download of the provider is happening from the webserver instead of the public internet
 
 # Prerequisites
 
@@ -41,7 +44,7 @@ cd provider_network_mirror
 fullchain.pem
 privkey.pem
 ```
-- edit the file ```config_files``` to match your FQDN in the url
+- edit the file ```config_files/terraformrc_example``` to match your FQDN in the url
 - start the Vagrant virtual machine
 ```
 vagrant up
@@ -50,7 +53,8 @@ vagrant up
 ```
 vagrant ssh
 ```
-- optional: Set terraform to DEBUG mode so with the initialization you can see where the provider download is coming from
+- optional   
+Set terraform LOG to DEBUG mode so with the initialization you can see where the provider download is coming from
 ```
 export TF_LOG=DEBUG
 ```
@@ -62,7 +66,19 @@ cd /vagrant
 ```
 terraform init
 ```
+- sample output with DEBUG level
+```
+2022-01-06T18:41:12.899Z [DEBUG] GET https://patrick.bg.hashicorp-success.com/registry.terraform.io/hashicorp/aws/3.70.0.json
+- Installing hashicorp/aws v3.70.0...
+- Installed hashicorp/aws v3.70.0 (verified checksum)
 
+Terraform has created a lock file .terraform.lock.hcl to record the provider
+selections it made above. Include this file in your version control repository
+so that Terraform can guarantee to make the same selections by default when
+you run "terraform init" in the future.
+
+Terraform has been successfully initialized!
+```
 - exit out of the vagrant machine
 ```
 exit
