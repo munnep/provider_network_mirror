@@ -83,7 +83,7 @@ provider_installation {
 ```
 - set TF_LOG=DEBUG to see the actual download location
 ```
-set TF_LOG=DEBUG
+export TF_LOG=DEBUG
 ```
 - run terraform init
 ```
