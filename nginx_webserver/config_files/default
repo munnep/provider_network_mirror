@@ -1,0 +1,27 @@
+# Default server configuration
+server {
+	listen 80 default_server;
+	listen [::]:80 default_server;
+
+	# SSL configuration
+	#
+	listen 443 ssl default_server;
+	listen [::]:443 ssl default_server;
+
+	# ssl_certificate /etc/letsencrypt/live/patrick.bg.hashicorp-success.com/fullchain.pem; # managed by Certbot
+	# ssl_certificate_key /etc/letsencrypt/live/patrick.bg.hashicorp-success.com/privkey.pem; # managed by Certbot
+
+	root /vagrant/terraform_file_mirror;
+	index index.html index.htm index.nginx-debian.html;
+	server_name _;
+
+	location / {
+		# First attempt to serve request as file, then
+		# as directory, then fall back to displaying a 404.
+		try_files $uri $uri/ =404;
+	}
+
+    location /vagrant/terraform_file_mirror/registry.terraform.io/ {
+    autoindex on;
+    }
+}
