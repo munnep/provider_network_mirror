@@ -1,15 +1,22 @@
-# provider_network_mirror
+# Example: Using Terraform network mirror for providers
 
-This repo will show you how you have a static web server hosting your terraform providers so you can download them from this webserver instead of from the internet itself
+This repo will show you how to have a static web server hosting your terraform providers so you can download them from this webserver instead of from the internet itself
 
-This repo uses a Vagrant virtual machine.   
-After the Vagrant virtual machine is started the following steps will happen:
+This repo uses a Vagrant to create 2 virtual machines.
+
+Vagrant virtual machine: **Nginx**
 - ubuntu virtual machine starts
 - Nginx webserver will be installed, configured and started
-- terraform will download the AWS provider from the internet and store it under ```/vagrant/terraform_file_mirror```
-- Terraform will create a file called ```$HOME/.terraformrc``` which from this point on will only look at this webserver by it's FQDN to download any providers
+- Terraform will be installed
+- Terraform will download the AWS provider from the internet and store it under ```/vagrant/terraform_file_mirror```
 
-After this you will manually login and initialize terraform to see the download of the provider is happening from the webserver instead of the public internet
+Vagrant virtual machine: **tf**
+- ubuntu virtual machine starts
+- Terraform will be installed
+- A terraform CLI configuration file will be placed on the server which will use the Nginx Webserver to download terraform provider from
+
+After this you will manually login to the Vagrant virtual machine **tf** and initialize terraform.  
+You will see the download of the provider happening from the local webserver instead of the public internet
 
 # Prerequisites
 
@@ -49,16 +56,16 @@ privkey.pem
 ```
 vagrant up
 ```
-- login to the virtual machine
+- login to the virtual machine **tf**
 ```
-vagrant ssh
+vagrant ssh tf
 ```
 - optional   
 Set terraform LOG to DEBUG mode so with the initialization you can see where the provider download is coming from
 ```
 export TF_LOG=DEBUG
 ```
-- go to the ```/vagrant/``` directory where the provider file is found
+- go to the ```/vagrant``` directory where the provider file is found
 ```
 cd /vagrant
 ```
