@@ -2,35 +2,25 @@
 Provider Network Mirror
 
 
+# Prerequisites
+
+## Install terraform  
+See the following documentation [How to install Terraform](https://learn.hashicorp.com/tutorials/terraform/install-cli)
+
+# How to
 
 
+# done
 
+# to do
 
+- [ ] create vagrant machine for nginx webserver to host the aws provider 
+    - [ ] install nginx
+    - [ ] install terraform
+    - [ ] configure certificates
+    - [ ] download the provider with terraform from the internet
+- [ ] create vagrant machine with terraform to download the provider the nginx webserver
+    - [ ] install terraform
+    - [ ] download the provider with terraform from the nginx webserver
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-https://www.youtube.com/watch?v=WY9W6tHbS8Y
-
-
-
-
-
-
-
-
-export TF_CLI_CONFIG_FILE=<PATH_TO_GIT_LOCATION>/provider_network_mirror/terraformrc_example
-
-terraform providers mirror /Users/patrickmunne/git/provider_network_mirror/terraform_file_mirror
-
-rm -rf .terraform .terraform.lock.hcl
+    
