@@ -8,9 +8,9 @@ server {
 	listen 443 ssl default_server;
 	listen [::]:443 ssl default_server;
 
-	# ssl_certificate /etc/letsencrypt/live/patrick.bg.hashicorp-success.com/fullchain.pem; # managed by Certbot
-	# ssl_certificate_key /etc/letsencrypt/live/patrick.bg.hashicorp-success.com/privkey.pem; # managed by Certbot
-
+	ssl_certificate /vagrant/config_files/fullchain.pem; # managed by Certbot
+	ssl_certificate_key /vagrant/config_files/privkey.pem; # managed by Certbot
+	
 	root /vagrant/terraform_file_mirror;
 	index index.html index.htm index.nginx-debian.html;
 	server_name _;
