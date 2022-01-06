@@ -2,9 +2,20 @@
 
 ## SSL Certificates
 
+### nip.io
+- tried it with http://192.168.56.33.nip.io/  
+didn't work because terraform needs https to download the providers from
+- tried it with https://192.168.56.33.nip.io/ and self-signed certificate. Didn't work because terraform doesn't accept it. 
+```
+sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/ssl/private/nginx-selfsigned.key -out /etc/ssl/certs/nginx-selfsigned.crt
+```
+didn't work because terraform needs https to download the providers from
+
+### patrick.bg.hashicorp-success.com 
 - Have valid SSL certificates for a FQDN 
 - DNS record FQDN pointing to the private IP address 192.168.56.33
 ```patrick.bg.hashicorp-success.com```
+
 
 
 ## Configuration
