@@ -7,5 +7,6 @@ Vagrant.configure("2") do |config|
     config.vm.provision "shell", path: "vagrant_scripts/install_terraform.sh"
     config.vm.provision "shell", path: "vagrant_scripts/configure_terraform_mirror_network.sh", privileged: false
     config.vm.provision "shell", path: "vagrant_scripts/configure_nginx.sh"
+    config.vm.provision "shell", path: "vagrant_scripts/configure_terraform.sh", privileged: false
 
   end
