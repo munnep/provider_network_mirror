@@ -5,7 +5,7 @@ This repo will show you how you have a static web server hosting your terraform 
 This repo uses a Vagrant virtual machine.   
 After the Vagrant virtual machine is started the following steps will happen:
 - ubuntu virtual machine starts
-- Nginx webserver will intalled configured and started
+- Nginx webserver will be installed, configured and started
 - terraform will download the AWS provider from the internet and store it under ```/vagrant/terraform_file_mirror```
 - Terraform will create a file called ```$HOME/.terraformrc``` which from this point on will only look at this webserver by it's FQDN to download any providers
 
@@ -18,7 +18,7 @@ Vagrant [See documentation](https://www.vagrantup.com/docs/installation)
 Virtualbox [See documentation](https://www.virtualbox.org/wiki/Downloads)
 
 ## SSL certificate
-You must configure a FQDN to the internal ip address ```192.168.56.33``` of the Vagrant box this repo uses and valid SSL certificates for the FQDN. 
+You must configure a FQDN to the internal ip address ```192.168.56.33``` of the Vagrant box you will start uses and valid SSL certificates for the FQDN. 
 
 If you don't have valid SSL certificates you can create one for free using Let's Encrypt. This repository includes an instruction on how to do this. [See documentation](nginx_create_certificate/README.md) This documentation will use Vagrant to create a server that can be used to create the SSL certificates. If you have SSL certificates you can skip this manual.    
 
@@ -66,18 +66,11 @@ cd /vagrant
 ```
 terraform init
 ```
-- sample output with DEBUG level
+- sample output with DEBUG level. See the GET with your FQDN
 ```
 2022-01-06T18:41:12.899Z [DEBUG] GET https://patrick.bg.hashicorp-success.com/registry.terraform.io/hashicorp/aws/3.70.0.json
 - Installing hashicorp/aws v3.70.0...
 - Installed hashicorp/aws v3.70.0 (verified checksum)
-
-Terraform has created a lock file .terraform.lock.hcl to record the provider
-selections it made above. Include this file in your version control repository
-so that Terraform can guarantee to make the same selections by default when
-you run "terraform init" in the future.
-
-Terraform has been successfully initialized!
 ```
 - exit out of the vagrant machine
 ```
