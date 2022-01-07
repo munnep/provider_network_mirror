@@ -4,9 +4,9 @@ This repo will show you how to have a static web server hosting your terraform p
 
 For more details about Terraform Network Mirror [see the official HashiCorp documentation](https://www.terraform.io/cli/config/config-file#cli-configuration-file-terraformrc-or-terraform-rc). 
 
-This repo uses a Vagrant to create 2 virtual machines.
+This repo uses Vagrant to create 2 virtual machines.
 
-Vagrant virtual machine: **Nginx**
+Vagrant virtual machine: **nginx**
 - ubuntu virtual machine starts
 - Nginx webserver will be installed, configured and started
 - Terraform will be installed
@@ -18,7 +18,7 @@ Vagrant virtual machine: **tf**
 - A terraform CLI configuration file will be placed on the server which will use the Nginx Webserver to download terraform provider from
 
 After this you will manually login to the Vagrant virtual machine **tf** and initialize terraform.  
-You will see the download of the provider happening from the local webserver instead of the public internet
+You will see the download of the provider happening from the nginx virtual machine instead of the public internet
 
 # Prerequisites
 
@@ -27,7 +27,7 @@ Vagrant [See documentation](https://www.vagrantup.com/docs/installation)
 Virtualbox [See documentation](https://www.virtualbox.org/wiki/Downloads)
 
 ## SSL certificate
-- You must configure a FQDN to the internal ip address ```192.168.56.33```. This address is configured in Vagrant and you will use it for the webserver. 
+- You must configure a FQDN in your DNS that points to the internal ip address ```192.168.56.33```. This address is configured in Vagrant and you will use it for the webserver. 
 - Valid SSL certificates for the FQDN. 
 
 If you don't have valid SSL certificates you can create one for free using Let's Encrypt. This repository includes an instruction on how to do this. [See documentation](nginx_create_certificate/README.md) This documentation will use Vagrant to create a server that can be used to create the SSL certificates. If you have SSL certificates you can skip this manual.    
