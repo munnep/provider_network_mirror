@@ -1,15 +1,24 @@
-# provider_network_mirror
+# Example: Using Terraform network mirror for providers
 
-This repo will show you how you have a static web server hosting your terraform providers so you can download them from this webserver instead of from the internet itself
+This repo will show you how to have a static web server hosting your terraform providers so you can download them from this webserver instead of from the internet itself
 
-This repo uses a Vagrant virtual machine.   
-After the Vagrant virtual machine is started the following steps will happen:
+For more details about Terraform Network Mirror [see the official HashiCorp documentation](https://www.terraform.io/cli/config/config-file#cli-configuration-file-terraformrc-or-terraform-rc). 
+
+This repo uses Vagrant to create 2 virtual machines.
+
+Vagrant virtual machine: **nginx**
 - ubuntu virtual machine starts
 - Nginx webserver will be installed, configured and started
-- terraform will download the AWS provider from the internet and store it under ```/vagrant/terraform_file_mirror```
-- Terraform will create a file called ```$HOME/.terraformrc``` which from this point on will only look at this webserver by it's FQDN to download any providers
+- Terraform will be installed
+- Terraform will download the AWS provider from the internet and store it under ```/vagrant/terraform_file_mirror```
 
-After this you will manually login and initialize terraform to see the download of the provider is happening from the webserver instead of the public internet
+Vagrant virtual machine: **tf**
+- ubuntu virtual machine starts
+- Terraform will be installed
+- A terraform CLI configuration file will be placed on the server which will use the Nginx Webserver to download terraform provider from
+
+After this you will manually login to the Vagrant virtual machine **tf** and initialize terraform.  
+You will see the download of the provider happening from the nginx virtual machine instead of the public internet
 
 # Prerequisites
 
@@ -18,7 +27,8 @@ Vagrant [See documentation](https://www.vagrantup.com/docs/installation)
 Virtualbox [See documentation](https://www.virtualbox.org/wiki/Downloads)
 
 ## SSL certificate
-You must configure a FQDN to the internal ip address ```192.168.56.33``` of the Vagrant box you will start uses and valid SSL certificates for the FQDN. 
+- You must configure a FQDN in your DNS that points to the internal ip address ```192.168.56.33```. This address is configured in Vagrant and you will use it for the webserver. 
+- Valid SSL certificates for the FQDN. 
 
 If you don't have valid SSL certificates you can create one for free using Let's Encrypt. This repository includes an instruction on how to do this. [See documentation](nginx_create_certificate/README.md) This documentation will use Vagrant to create a server that can be used to create the SSL certificates. If you have SSL certificates you can skip this manual.    
 
@@ -49,16 +59,16 @@ privkey.pem
 ```
 vagrant up
 ```
-- login to the virtual machine
+- login to the virtual machine **tf**
 ```
-vagrant ssh
+vagrant ssh tf
 ```
 - optional   
-Set terraform LOG to DEBUG mode so with the initialization you can see where the provider download is coming from
+Set terraform LOG to DEBUG mode. You can then see clearly with the terraform initialization where the downloaded provider is coming from
 ```
 export TF_LOG=DEBUG
 ```
-- go to the ```/vagrant/``` directory where the provider file is found
+- go to the ```/vagrant``` directory where the provider file is found
 ```
 cd /vagrant
 ```
