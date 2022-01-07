@@ -2,6 +2,8 @@
 
 This repo will show you how to have a static web server hosting your terraform providers so you can download them from this webserver instead of from the internet itself
 
+For more details about Terraform Network Mirror [see the official HashiCorp documentation](https://www.terraform.io/cli/config/config-file#cli-configuration-file-terraformrc-or-terraform-rc). 
+
 This repo uses a Vagrant to create 2 virtual machines.
 
 Vagrant virtual machine: **Nginx**
@@ -62,7 +64,7 @@ vagrant up
 vagrant ssh tf
 ```
 - optional   
-Set terraform LOG to DEBUG mode so with the initialization you can see where the provider download is coming from
+Set terraform LOG to DEBUG mode. You can then see clearly with the terraform initialization where the downloaded provider is coming from
 ```
 export TF_LOG=DEBUG
 ```
