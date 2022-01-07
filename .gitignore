@@ -1,0 +1,5 @@
+.terraform.lock.hcl
+.terraform/
+.vagrant/
+ssl/
+terraform_file_mirror/
