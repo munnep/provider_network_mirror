@@ -1,6 +1,6 @@
 provider_installation {
   network_mirror {
-    url = "https://patrick.bg.hashicorp-success.com/"
+    url = "https://192.168.56.33.nip.io/"
     include = ["*/*"]
   }
   direct {
